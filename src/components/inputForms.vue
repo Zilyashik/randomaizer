@@ -37,6 +37,16 @@ export default {
             placeholder: 'example@example.ru',
           }
         },
+        {
+          $cmp: 'FormKit',
+          if: '$get(input).value === number',
+          props: {
+            type: 'number',
+            label: '$: "Type (" + $get(input.value + ")"',
+            name: 'Number',
+            placeholder: 'Number',
+          },
+        },
       ]
     }
   }
