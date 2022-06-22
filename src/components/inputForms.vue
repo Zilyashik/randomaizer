@@ -27,6 +27,16 @@ export default {
             validation: 'required'
           }
         },
+        {
+          $cmp: 'FormKit',
+          if: '$get(input).value === email',
+          props: {
+            type: 'text',
+            label: '$: "Type (" + $get(input).value + ")"',
+            name: 'email',
+            placeholder: 'example@example.ru',
+          }
+        },
       ]
     }
   }
