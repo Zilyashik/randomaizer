@@ -57,7 +57,16 @@ export default {
             placeholder: 'Telephone',
           }
         },
-
+        {
+          $cmp: 'FormKit',
+          if: '$get(input).value === text',
+          props: {
+            type: 'text',
+            label: '$: "Type (" + $get(input).value + ")"',
+            name: 'Text',
+            placeholder: 'Text',
+          },
+        },
       ]
     }
   }
