@@ -67,6 +67,16 @@ export default {
             placeholder: 'Text',
           },
         },
+        {
+          $cmp: 'FormKit',
+          if: '$get(input).value === textarea',
+          props: {
+            type: 'textarea',
+            label: '$: "Type (" + $get(input).value + ")"',
+            name: 'Textarea',
+            placeholder: 'Textarea',
+          },
+        }
       ]
     }
   }
