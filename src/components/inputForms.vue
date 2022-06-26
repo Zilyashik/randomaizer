@@ -1,5 +1,11 @@
 <template>
-  <FormKitSchema :schema="schema" />
+     <div class="double" >
+      <FormKitSchema
+          :schema="schema"
+          class="inputs"
+          v-model="schema"
+      />
+     </div>
 </template>
 
 <script>
@@ -7,7 +13,7 @@ import { FormKitSchema } from '@formkit/vue'
 export default {
   name: "inputForms",
   components: FormKitSchema,
-  data() {
+  data () {
     return {
       schema: [
         {
@@ -15,7 +21,6 @@ export default {
           props: {
             type: 'select',
             id: 'input',
-            label: 'Input',
             placeholder: 'Pick your input',
             options: {
               email: 'Email',
@@ -25,64 +30,83 @@ export default {
               textarea: 'Textarea'
             },
             validation: 'required'
-          }
+          },
         },
         {
           $cmp: 'FormKit',
+          id: 'email',
           if: '$get(input).value === email',
           props: {
-            type: 'text',
-            label: '$: "Type (" + $get(input).value + ")"',
+
+            type: 'email',
             name: 'email',
-            placeholder: 'example@example.ru',
-          }
+            placeholder: 'Email',
+          },
         },
         {
           $cmp: 'FormKit',
+          id: 'number',
           if: '$get(input).value === number',
           props: {
+
             type: 'number',
-            label: '$: "Type (" + $get(input.value + ")"',
             name: 'Number',
             placeholder: 'Number',
           },
         },
         {
           $cmp: 'FormKit',
+          id: 'tel',
           if: '$get(input).value === telephone',
           props: {
+
             type: 'tel',
-            label: '$: "Type (" + $get(input).value + ")"',
             name: 'telephone',
             placeholder: 'Telephone',
           }
         },
         {
           $cmp: 'FormKit',
+          id: 'text',
           if: '$get(input).value === text',
           props: {
+
             type: 'text',
-            label: '$: "Type (" + $get(input).value + ")"',
             name: 'Text',
             placeholder: 'Text',
           },
         },
         {
           $cmp: 'FormKit',
+          id: 'textarea',
           if: '$get(input).value === textarea',
           props: {
+
             type: 'textarea',
-            label: '$: "Type (" + $get(input).value + ")"',
             name: 'Textarea',
             placeholder: 'Textarea',
           },
-        }
-      ]
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 
 <style scoped>
 
+.double {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 3px solid black;
+  height: 200px;
+  width: 700px;
+}
+.inputs{
+  width: 200px;
+
+}
 </style>
