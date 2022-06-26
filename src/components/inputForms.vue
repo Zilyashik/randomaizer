@@ -1,9 +1,16 @@
 <template>
      <div class="double" >
+       <select v-model="type" @change="$emit('addInput', index, type)">
+         <option value="email">email</option>
+         <option value="number">number</option>
+         <option value="telephone">telephone</option>
+         <option value="text">text</option>
+         <option value="textarea">textarea</option>
+       </select>
+
       <FormKitSchema
-          :schema="schema"
+          :schema="schema[type]"
           class="inputs"
-          v-model="schema"
       />
      </div>
 </template>
@@ -12,82 +19,53 @@
 import { FormKitSchema } from '@formkit/vue'
 export default {
   name: "inputForms",
+  props: ["index"],
   components: FormKitSchema,
   data () {
     return {
-      schema: [
-        {
+      type: 'email',
+      schema: {
+        'email': {
           $cmp: 'FormKit',
           props: {
-            type: 'select',
-            id: 'input',
-            placeholder: 'Pick your input',
-            options: {
-              email: 'Email',
-              number: 'Number',
-              telephone: 'Telephone',
-              text: 'Text',
-              textarea: 'Textarea'
-            },
-            validation: 'required'
-          },
-        },
-        {
-          $cmp: 'FormKit',
-          id: 'email',
-          if: '$get(input).value === email',
-          props: {
-
             type: 'email',
             name: 'email',
             placeholder: 'Email',
           },
         },
-        {
+        'number': {
           $cmp: 'FormKit',
-          id: 'number',
-          if: '$get(input).value === number',
           props: {
-
             type: 'number',
             name: 'Number',
             placeholder: 'Number',
           },
         },
-        {
+        'telephone': {
           $cmp: 'FormKit',
-          id: 'tel',
-          if: '$get(input).value === telephone',
           props: {
-
             type: 'tel',
             name: 'telephone',
             placeholder: 'Telephone',
           }
         },
-        {
+        'text': {
           $cmp: 'FormKit',
-          id: 'text',
-          if: '$get(input).value === text',
           props: {
-
             type: 'text',
             name: 'Text',
             placeholder: 'Text',
           },
         },
-        {
+        'textarea': {
           $cmp: 'FormKit',
-          id: 'textarea',
-          if: '$get(input).value === textarea',
           props: {
-
             type: 'textarea',
             name: 'Textarea',
             placeholder: 'Textarea',
           },
         },
-      ],
+      }
     }
   },
 }
@@ -105,8 +83,8 @@ export default {
   height: 200px;
   width: 700px;
 }
+
 .inputs{
   width: 200px;
-
 }
 </style>

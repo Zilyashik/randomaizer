@@ -1,12 +1,14 @@
 <template>
   <div>
     Сколько создать?
-    <input type="number" v-model="forms.count" @change="createComponent" />
+    <input type="number" v-model="forms.count"/>
   </div>
 
   <inputForms
       v-for="index in forms.count"
       :key="index"
+      :index="index"
+      @addInput="addInput"
   />
 
   <button @click="this.forms.count++">+</button>
@@ -24,8 +26,9 @@ export default {
     return {
       forms: {
         count: 0,
+        components: []
       },
-      components: {
+      schema: {
         'email': {
           $cmp: 'FormKit',
           props: {
@@ -70,6 +73,9 @@ export default {
     }
   },
   methods: {
+    addInput(index, type) {
+      this.forms.components[index] = this.schema[type];
+    }
   }
 }
 </script>
