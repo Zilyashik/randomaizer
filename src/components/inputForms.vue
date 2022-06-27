@@ -17,6 +17,8 @@
 
 <script>
 import { FormKitSchema } from '@formkit/vue'
+import {components} from "@/inputs/components";
+
 export default {
   name: "inputForms",
   props: ["index"],
@@ -25,46 +27,7 @@ export default {
     return {
       type: 'email',
       schema: {
-        'email': {
-          $cmp: 'FormKit',
-          props: {
-            type: 'email',
-            name: 'email',
-            placeholder: 'Email',
-          },
-        },
-        'number': {
-          $cmp: 'FormKit',
-          props: {
-            type: 'number',
-            name: 'Number',
-            placeholder: 'Number',
-          },
-        },
-        'telephone': {
-          $cmp: 'FormKit',
-          props: {
-            type: 'tel',
-            name: 'telephone',
-            placeholder: 'Telephone',
-          }
-        },
-        'text': {
-          $cmp: 'FormKit',
-          props: {
-            type: 'text',
-            name: 'Text',
-            placeholder: 'Text',
-          },
-        },
-        'textarea': {
-          $cmp: 'FormKit',
-          props: {
-            type: 'textarea',
-            name: 'Textarea',
-            placeholder: 'Textarea',
-          },
-        },
+        ...components
       }
     }
   },

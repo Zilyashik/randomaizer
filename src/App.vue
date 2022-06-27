@@ -1,7 +1,7 @@
 <template>
   <div>
     Сколько создать?
-    <input type="number" v-model="forms.count"/>
+    <input type="number" v-model="forms.count" @change="create"/>
   </div>
 
   <inputForms
@@ -11,11 +11,12 @@
       @addInput="addInput"
   />
 
-  <button @click="this.forms.count++">+</button>
+  <button @click="add">+</button>
 </template>
 
 <script>
 import inputForms from '@/components/inputForms';
+import {components} from "@/inputs/components";
 
 export default {
   name: 'App',
@@ -29,52 +30,23 @@ export default {
         components: []
       },
       schema: {
-        'email': {
-          $cmp: 'FormKit',
-          props: {
-            type: 'email',
-            name: 'email',
-            placeholder: 'Email',
-          },
-        },
-        'number': {
-          $cmp: 'FormKit',
-          props: {
-            type: 'number',
-            name: 'Number',
-            placeholder: 'Number',
-          },
-        },
-        'telephone': {
-          $cmp: 'FormKit',
-          props: {
-            type: 'tel',
-            name: 'telephone',
-            placeholder: 'Telephone',
-          }
-        },
-        'text': {
-          $cmp: 'FormKit',
-          props: {
-            type: 'text',
-            name: 'Text',
-            placeholder: 'Text',
-          },
-        },
-        'textarea': {
-          $cmp: 'FormKit',
-          props: {
-            type: 'textarea',
-            name: 'Textarea',
-            placeholder: 'Textarea',
-          },
-        },
+        ...components
       }
     }
   },
   methods: {
     addInput(index, type) {
       this.forms.components[index] = this.schema[type];
+      console.log(this.forms.components)
+    },
+    create() {
+      for (let i = 1; i <= this.forms.count; i++) {
+        this.forms.components[i] = this.schema['email'];
+      }
+    },
+    add() {
+      this.forms.count++;
+      this.forms.components.push(this.schema['email']);
     }
   }
 }
