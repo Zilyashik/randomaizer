@@ -40,14 +40,13 @@ export default {
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   border: 3px solid black;
-  height: 100px;
-  width: 500px;
+  height: 70px;
+  width: 330px;
 }
-
 .inputs{
-  width: 200px;
+
 }
 </style>
