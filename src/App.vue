@@ -1,7 +1,7 @@
 <template>
   <div class="random_container">
     <div class="random_number">
-      Сколько создать?
+      Напишите кол-во полей
       <input type="number" v-model="forms.count" @change="create" class="number"/>
       <button @click="add" class="button">Add</button>
       <button @click="del" class="button">Delete</button>
@@ -61,7 +61,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+*{
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+}
   .random_container{
     border: 3px solid green;
     width: 700px;
@@ -76,12 +83,15 @@ export default {
     flex-direction: column;
     height: 100%;
     margin: 50px 90px 0 0 ;
+    text-align: center;
+    line-height: 15px;
+    font-size: 15px;
   }
   .number{
     border: 1px solid black;
     height: 30px;
     border-radius: 10px;
-    margin-top: 15px;
+    margin-top: 10px;
     padding-left: 10px;
   }
   .button{
@@ -89,7 +99,7 @@ export default {
     background-color: #CA3432;
     border: none;
     border-radius: 10px;
-    margin-top: 15px;
+    margin-top: 10px;
     height: 30px;
     color: white;
     letter-spacing: 1px;
