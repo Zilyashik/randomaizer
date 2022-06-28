@@ -12,6 +12,7 @@
   />
 
   <button @click="add">+</button>
+  <button @click="del">-</button>
 </template>
 
 <script>
@@ -47,6 +48,10 @@ export default {
     add() {
       this.forms.count++;
       this.forms.components.push(this.schema['email']);
+    },
+    del() {
+      this.forms.count--;
+      this.forms.components.pop(this.schema['email']);
     }
   }
 }

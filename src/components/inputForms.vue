@@ -40,11 +40,11 @@ export default {
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   border: 3px solid black;
-  height: 200px;
-  width: 700px;
+  height: 100px;
+  width: 500px;
 }
 
 .inputs{
