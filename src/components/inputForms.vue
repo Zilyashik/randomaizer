@@ -1,16 +1,17 @@
 <template>
-     <div class="double" >
-       <select v-model="type" @change="$emit('addInput', index, type)">
-         <option value="email">email</option>
-         <option value="number">number</option>
-         <option value="telephone">telephone</option>
-         <option value="text">text</option>
-         <option value="textarea">textarea</option>
+     <div class="select_container" >
+       <select v-model="type" @change="$emit('addInput', index, type)" class="select">
+         <option value="email" class="option">Email</option>
+         <option value="number" class="option">Number</option>
+         <option value="telephone" class="option">Telephone</option>
+         <option value="text" class="option">Text</option>
+         <option value="textarea" class="option">Textarea</option>
        </select>
 
       <FormKitSchema
           :schema="schema[type]"
           class="inputs"
+          outer-class="$reset input"
       />
      </div>
 </template>
@@ -35,18 +36,21 @@ export default {
 </script>
 
 <style scoped>
-
-.double {
+.select_container {
   margin: 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: 3px solid black;
+  border: 3px solid palevioletred;
   height: 70px;
   width: 330px;
 }
-.inputs{
-
+.select{
+  border: 3px solid seagreen;
+  height: 30px;
+}
+.option{
+  border: 3px solid tomato;
 }
 </style>
