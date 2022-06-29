@@ -5,7 +5,6 @@ export const components = {
             type: 'email',
             name: 'email',
             placeholder: 'Email',
-            validation: "required|email",
         },
     },
     'number': {

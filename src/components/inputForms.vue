@@ -1,6 +1,6 @@
 <template>
      <div class="select_container" >
-       <select v-model="type" @change="$emit('addInput', index, type)" class="select">
+       <select v-model="type" @change="$emit('addInput', item.index, type)" class="select">
          <option value="email" class="option">Email</option>
          <option value="number" class="option">Number</option>
          <option value="telephone" class="option">Telephone</option>
@@ -13,6 +13,10 @@
           class="inputs"
           outer-class="$reset input"
       />
+       <button
+           @click="$emit('removeInput', item.index)"
+       >Delete1
+       </button>
      </div>
 </template>
 
@@ -22,16 +26,19 @@ import {components} from "@/inputs/components";
 
 export default {
   name: "inputForms",
-  props: ["index"],
+  props: ["item"],
   components: FormKitSchema,
   data () {
     return {
       type: 'email',
       schema: {
         ...components
-      }
+      },
     }
   },
+  methods: {
+
+  }
 }
 </script>
 
@@ -42,15 +49,20 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: 3px solid palevioletred;
-  height: 70px;
-  width: 330px;
+  /*border: 3px solid palevioletred;*/
+  height: 60px;
+  width: 400px;
+  text-decoration: none;
 }
 .select{
-  border: 3px solid seagreen;
-  height: 30px;
+  height: 44px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.select:focus{
+  text-decoration: none;
 }
 .option{
-  border: 3px solid tomato;
+  /*border: 3px solid tomato;*/
 }
 </style>

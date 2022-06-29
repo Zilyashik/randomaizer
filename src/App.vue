@@ -9,10 +9,11 @@
 
     <div class="form_container">
       <inputForms
-          v-for="index in forms.count"
-          :key="index"
-          :index="index"
+          v-for="item in forms.components"
+          :key="item.index"
+          :item="item"
           @addInput="addInput"
+         @removeInput="removeInput"
       />
     </div>
   </div>
@@ -35,28 +36,43 @@ export default {
         components: []
       },
       schema: {
-        ...components
+       ...components
       }
     }
   },
   methods: {
     addInput(index, type) {
-      this.forms.components[index] = this.schema[type];
-      console.log(this.forms.components)
+      let schema = this.schema;
+      this.forms.components = this.forms.components.map(
+          function (t) {
+            if (t.index === index) {
+              t.type = schema[type];
+            }
+            return t;
+          });
     },
     create() {
       for (let i = 1; i <= this.forms.count; i++) {
-        this.forms.components[i] = this.schema['email'];
+        this.forms.components.push({
+          index: i,
+          type: this.schema['email']
+        });
       }
     },
     add() {
       this.forms.count++;
-      this.forms.components.push(this.schema['email']);
+      this.forms.components.push({
+        index: this.forms.count,
+        type: this.schema['email']
+      });
     },
     del() {
       this.forms.count--;
       this.forms.components.pop(this.schema['email']);
-    }
+    },
+    removeInput(index) {
+      this.forms.components = this.forms.components.filter(t => t.index !== index);
+    },
   }
 }
 </script>
@@ -70,19 +86,19 @@ export default {
   padding: 0;
 }
   .random_container{
-    border: 3px solid green;
+    /*border: 3px solid green;*/
     width: 700px;
     display: flex;
     flex-direction: row;
     margin: 0 auto;
   }
   .random_number {
-    border: 3px solid salmon;
+    /*border: 3px solid salmon;*/
     width: 150px;
     display: flex;
     flex-direction: column;
     height: 100%;
-    margin: 50px 90px 0 0 ;
+    margin: 40px 90px 0 0 ;
     text-align: center;
     line-height: 15px;
     font-size: 15px;
