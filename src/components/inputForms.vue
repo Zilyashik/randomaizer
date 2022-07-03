@@ -1,44 +1,41 @@
 <template>
-     <div class="select_container" >
-       <select v-model="type" @change="$emit('addInput', item.index, type)" class="select">
-         <option value="email" class="option">Email</option>
-         <option value="number" class="option">Number</option>
-         <option value="telephone" class="option">Telephone</option>
-         <option value="text" class="option">Text</option>
-         <option value="textarea" class="option">Textarea</option>
-       </select>
+  <form action="#">
 
-      <FormKitSchema
-          :schema="schema[type]"
-          class="inputs"
-          outer-class="$reset input"
-      />
-       <button
-           @click="$emit('removeInput', item.index)"
-       >Delete1
-       </button>
-     </div>
+    <div class="select_container" >
+      <select v-model="type" @change="$emit('addInput', item.index, type, content)" class="select">
+        <option value="email" class="option">Email</option>
+        <option value="number" class="option">Number</option>
+        <option value="telephone" class="option">Telephone</option>
+        <option value="text" class="option">Text</option>
+        <option value="textarea" class="option">Textarea</option>
+      </select>
+
+      <input type="text" class="inputs" v-model="content">
+
+      <button
+          @click="$emit('removeInput', item.index)"
+      >Delete1
+      </button>
+    </div>
+  </form>
+
 </template>
 
 <script>
-import { FormKitSchema } from '@formkit/vue'
 import {components} from "@/inputs/components";
 
 export default {
   name: "inputForms",
   props: ["item"],
-  components: FormKitSchema,
   data () {
     return {
       type: 'email',
+      content: '',
       schema: {
         ...components
       },
     }
   },
-  methods: {
-
-  }
 }
 </script>
 

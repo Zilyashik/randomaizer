@@ -1,34 +1,16 @@
 <template>
-  <div class="random_container">
-    <div class="random_number">
-      Напишите кол-во полей
-      <input type="number" v-model="forms.count" @change="create" class="number"/>
-      <button @click="add" class="button">Add</button>
-      <button @click="del" class="button">Delete</button>
-    </div>
 
-    <div class="form_container">
-      <inputForms
-          v-for="item in forms.components"
-          :key="item.index"
-          :item="item"
-          @addInput="addInput"
-         @removeInput="removeInput"
-      />
-    </div>
+  <div class="app">
+    <router-view></router-view>
   </div>
 
 </template>
 
 <script>
-import inputForms from '@/components/inputForms';
 import {components} from "@/inputs/components";
 
 export default {
   name: 'App',
-  components: {
-    inputForms
-  },
   data() {
     return {
       forms: {
