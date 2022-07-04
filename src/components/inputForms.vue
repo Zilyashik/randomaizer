@@ -56,7 +56,8 @@ export default {
   border-radius: 15px;
   text-decoration: none;
   border: 1px solid black;
-  font-size: 25px;
+  font-size: 20px;
+  padding-left: 7px;
   width: 240px;
 }
 .button_delete{
