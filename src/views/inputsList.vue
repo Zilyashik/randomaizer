@@ -7,9 +7,8 @@
         @addInput="addInput"
         @removeInput="removeInput"
     />
-
-    <button class="add" @click="add">add</button>
-    <button class="send" @click="send">отправить на бэк</button>
+    <button class="button_add" @click="add">+</button>
+    <button class="button_send" @click="send">Сохранить</button>
   </div>
 </template>
 
@@ -67,5 +66,35 @@ export default {
 </script>
 
 <style scoped>
-
+.form_container{
+  display: flex;
+  flex-direction: column;
+}
+.button_add,
+.button_send{
+  text-decoration: none;
+  background-color: #CA3432;
+  border: none;
+  border-radius: 15px;
+  margin-top: 10px;
+  width: 100%;
+  height: 40px;
+  color: white;
+  letter-spacing: 1px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.button_add{
+  background-color: rgba(58, 196, 125, 1);
+}
+.button_send:hover{
+  background-color: darkred;
+}
+.button_add:hover{
+  background-color: seagreen;
+}
+.button_add:active,
+.button_send:active{
+  background-color: salmon;
+}
 </style>

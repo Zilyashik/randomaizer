@@ -21,47 +21,12 @@ export default {
   margin: 0;
   padding: 0;
 }
-  .random_container{
-    /*border: 3px solid green;*/
-    width: 700px;
-    display: flex;
-    flex-direction: row;
-    margin: 0 auto;
-  }
-  .random_number {
-    /*border: 3px solid salmon;*/
-    width: 150px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    margin: 40px 90px 0 0 ;
-    text-align: center;
-    line-height: 15px;
-    font-size: 15px;
-  }
-  .number{
-    border: 1px solid black;
-    height: 30px;
-    border-radius: 10px;
-    margin-top: 10px;
-    padding-left: 10px;
-  }
-  .button{
-    text-decoration: none;
-    background-color: #CA3432;
-    border: none;
-    border-radius: 10px;
-    margin-top: 10px;
-    height: 30px;
-    color: white;
-    letter-spacing: 1px;
-    cursor: pointer;
-  }
-  .button:hover{
-    background-color: darkred;
-  }
-  .button:active{
-    background-color: salmon;
-
-  }
+.app{
+  margin: 0 auto;
+  width: 700px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 </style>
